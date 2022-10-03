@@ -1,0 +1,25 @@
+<resources>
+    <!-- DEFAULT STRINGS -->
+    <string name="app_name">Sca-ceipe</string>
+
+    <!-- LOGIN INFORMATION STRINGS -->
+    <string name="username">user name</string>
+    <string name="password">password</string>
+    <string name="login">LOG IN</string>
+
+    <!-- CREATE INFORMATION STRINGS -->
+    <string name="create">CREATE</string>
+    <string name="email">email</string>
+    <string name="made_account">Already have an account?</string>
+    <string name="forget_password"><u>Forgot Password?</u></string>
+
+    <!-- SIGN UP STRINGS -->
+    <string name="signup_question">Don\'t have an account?</string>
+    <string name="signup">SIGN UP</string>
+
+
+
+
+
+
+</resources>

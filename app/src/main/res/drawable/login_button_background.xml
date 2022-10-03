@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--Button is not enabled -->
+    <item android:state_enabled="false" >
+        <shape>
+            <solid
+                android:shape="oval"
+                android:color="@color/green_1"/>
+
+            <stroke
+                android:width="5dp"
+                android:color="@color/green_2">
+            </stroke>
+
+            <corners
+                android:radius="50dp"/>
+
+            <size
+                android:width="200dp"
+                android:height="100dp" />
+        </shape>
+    </item>
+
+    <!--Button in pressed state -->
+    <item android:state_pressed="true" android:color="@color/green_2" >
+        <shape>
+            <solid
+                android:shape="oval"
+                android:color="@color/green_2"/>
+
+            <stroke
+                android:width="5dp"
+                android:color="@color/green_2">
+            </stroke>
+
+            <corners
+                android:radius="50dp"/>
+
+            <size
+                android:width="200dp"
+                android:height="100dp" />
+        </shape>
+    </item>
+
+</selector>
