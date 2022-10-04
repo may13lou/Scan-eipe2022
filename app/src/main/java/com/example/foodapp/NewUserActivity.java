@@ -14,6 +14,7 @@ public class NewUserActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
+        //START UP DEFAULT -> DO NOT DELETE
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_user);
 
@@ -24,7 +25,7 @@ public class NewUserActivity extends AppCompatActivity
         }
         catch(Exception e){};
 
-        //CODE TO LINK TO NEW USER
+        //CODE TO LINK TO MAINACTIVITY
         backLoginButton = (Button) findViewById(R.id.back_login_button);
         backLoginButton.setOnClickListener(new View.OnClickListener()
         {

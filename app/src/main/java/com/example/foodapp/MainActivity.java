@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
+
 public class MainActivity extends AppCompatActivity
 {
     //BUTTON LINKING TO CREATE LOGIN SCREEN
@@ -36,6 +39,12 @@ public class MainActivity extends AppCompatActivity
                 openNewUserActivity();
             }
         });
+
+        //ANIMATIONS WITH YoYo LIBRARY -> CHECK DEPENDENCIES
+        YoYo.with(Techniques.Bounce)
+                .duration(1800)
+                .repeat(100)
+                .playOn(findViewById(R.id.signup_button));
 
     }
 
