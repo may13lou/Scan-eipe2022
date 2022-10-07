@@ -17,9 +17,9 @@
     <string name="signup_question">Don\'t have an account?</string>
     <string name="signup">SIGN UP</string>
 
-
-
-
-
+    <!-- LANDING PAGE STRINGS -->
+    <string name="landing_page_title">Welcome to Sca-ceipe!</string>
+    <string name="landing_page_welcome">Ready to make meal prep a breeze?</string>
+    <string name="landing_page_continue">Let\'s go!</string>
 
 </resources>
