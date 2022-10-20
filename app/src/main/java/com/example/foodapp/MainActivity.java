@@ -8,6 +8,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.widget.LinearLayout;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.ScaleAnimation;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
@@ -82,7 +88,6 @@ public class MainActivity extends AppCompatActivity
                     checkLogin(usernameMain.getText().toString(),passwordMain.getText().toString());
                 }
             });
-
         /* END OF LINKING TO PAGES */
     }
 
@@ -99,7 +104,7 @@ public class MainActivity extends AppCompatActivity
     //FUNCTION TO LINK TO HOME SCREEN ACTIVITY  NOTE: FOR NOW FOR LINKING PURPOSES I LINKED IT TO LANDING PAGE
     public void openHomeActivity()
     {
-        Intent intent = new Intent(this, LandingPageActivity.class);
+        Intent intent = new Intent(this, HomeActivity.class);
         startActivity(intent);
     }
 

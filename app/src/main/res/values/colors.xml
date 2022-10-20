@@ -19,4 +19,18 @@
     <color name="green_3">#45625c</color>
     <color name="blue_1">#a3d2d5</color>
     <color name="blue_2">#6ba5aa</color>
+
+    <!-- BLAINE COLORS -->
+    <color name="home">#FF9800</color>
+    <color name="Favorites">#F43D5C</color>
+    <color name="Profile">#6ba5aa</color>
+    <color name="Recipes">#7fc383</color>
+    <color name="Notifications">#45625c</color>
+
+    <color name="home_20">#EFD269</color>
+    <color name="Favorites_20">#D3033D</color>
+    <color name="Profile_20">#009688</color>
+    <color name="Recipes_20">#039450</color>
+    <color name="Notifications_20">#079A0D</color>
+
 </resources>
