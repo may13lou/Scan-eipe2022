@@ -95,26 +95,26 @@
         <!--NOTE: LOGIN BUTTON
         IMPORTANT: "android:onClick="login"" will need to be defined in Java -->
         <android.widget.Button
-                    android:id="@+id/login_button"
-                    android:layout_width="157dp"
-                    android:layout_height="53dp"
-                    android:layout_marginStart="63dp"
-                    android:layout_marginTop="301dp"
-                    android:layout_marginEnd="1dp"
-                    android:background="@drawable/login_button_background"
-                    android:fontFamily="@font/bs_bold"
-                    android:gravity="center"
-                    android:text="@string/login"
-                    android:textColor="@color/white"
-                    android:textSize="25sp"
+            android:id="@+id/login_main_button"
+            android:layout_width="157dp"
+            android:layout_height="53dp"
+            android:layout_marginStart="63dp"
+            android:layout_marginTop="301dp"
+            android:layout_marginEnd="1dp"
+            android:background="@drawable/login_button_background"
+            android:fontFamily="@font/bs_bold"
+            android:gravity="center"
+            android:text="@string/login"
+            android:textColor="@color/white"
+            android:textSize="25sp"
 
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="@+id/info_rectangle"
-                    app:layout_constraintEnd_toStartOf="@id/right_guideline"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/info_rectangle"
-                    app:layout_constraintTop_toTopOf="@+id/info_rectangle"
-                    app:layout_constraintVertical_bias="0.008" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/info_rectangle"
+            app:layout_constraintEnd_toStartOf="@id/right_guideline"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/info_rectangle"
+            app:layout_constraintTop_toTopOf="@+id/info_rectangle"
+            app:layout_constraintVertical_bias="0.008" />
 
         <!-- NOTE: INFORMATION LAYOUT (USERNAME,PASSWORD,EMAIL) -->
         <LinearLayout
@@ -133,8 +133,11 @@
             app:layout_constraintTop_toTopOf="@+id/info_rectangle"
             app:layout_constraintVertical_bias="0.645">
 
-            <TextView
-                android:id="@+id/userName"
+            <EditText
+                android:id="@+id/stringUserName"
+                android:hint="@string/username"
+                android:textColorHint="@color/white"
+                android:inputType="text"
                 android:layout_width="192dp"
                 android:layout_height="39dp"
                 android:layout_weight="1"
@@ -144,7 +147,6 @@
                 android:gravity="center_vertical"
                 android:paddingStart="15dp"
                 android:paddingEnd="15dp"
-                android:text="@string/username"
                 android:textColor="@color/white"
                 android:textSize="15sp"
                 tools:ignore="TextContrastCheck" />
@@ -154,8 +156,11 @@
                 android:layout_height="13dp"
                 android:layout_weight="1" />
 
-            <TextView
-                android:id="@+id/password"
+            <!--android:text="@string/password"-->
+            <EditText
+                android:id="@+id/stringPassword"
+                android:hint="@string/password"
+                android:textColorHint="@color/white"
                 android:layout_width="192dp"
                 android:layout_height="39dp"
                 android:layout_weight="1"
@@ -164,10 +169,10 @@
                 android:gravity="center_vertical"
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
-                android:text="@string/password"
                 android:textColor="@color/white"
                 android:textSize="15sp"
-                tools:ignore="TextContrastCheck" />
+                tools:ignore="TextContrastCheck"
+                android:inputType="textPassword"/>
         </LinearLayout>
 
     <!-- *END OF LOGIN COMPONENTS* -->
