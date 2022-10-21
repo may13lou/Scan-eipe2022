@@ -69,30 +69,8 @@
 
 
     <!-- *NEW USER COMPONENTS* -->
-
-        <!--NOTE: LOGO-->
-        <ImageView
-            android:id="@+id/LOGO"
-            android:layout_width="143dp"
-            android:layout_height="114dp"
-            android:layout_marginStart="74dp"
-            android:layout_marginTop="38dp"
-            android:layout_marginEnd="21dp"
-
-            android:layout_marginBottom="222dp"
-            android:contentDescription="@string/app_name"
-            android:src="@drawable/logo"
-            app:layout_constraintBottom_toBottomOf="@+id/info_rectangle"
-            app:layout_constraintEnd_toEndOf="@+id/info_rectangle"
-            app:layout_constraintEnd_toStartOf="@+id/right_guideline"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/info_rectangle"
-            app:layout_constraintTop_toTopOf="@+id/info_rectangle"
-            app:layout_constraintVertical_bias="0.625"
-            tools:ignore="ImageContrastCheck" />
-
-        <!--NOTE: CREATE BUTTON
-        IMPORTANT: "android:onClick="create_newuser" will need to be defined in Java -->
+    <!--NOTE: CREATE BUTTON
+    IMPORTANT: "android:onClick="create_newuser" will need to be defined in Java -->
         <android.widget.Button
                 android:id="@+id/create_button"
                 android:layout_width="157dp"
@@ -117,83 +95,89 @@
                 tools:ignore="TextContrastCheck" />
 
         <!-- NOTE: INFORMATION LAYOUT (USERNAME,PASSWORD,EMAIL) -->
-        <LinearLayout
-            android:id="@+id/linear_create_info"
-            android:layout_width="268dp"
-            android:layout_height="158dp"
-            android:layout_marginTop="132dp"
-            android:layout_marginEnd="1dp"
-            android:layout_marginBottom="40dp"
-            android:gravity="center"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="@+id/info_rectangle"
-            app:layout_constraintEnd_toEndOf="@+id/info_rectangle"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/info_rectangle"
-            app:layout_constraintTop_toTopOf="@+id/info_rectangle"
-            app:layout_constraintVertical_bias="0.0">
-
-            <TextView
-                android:id="@+id/userName"
-                android:layout_width="192dp"
-                android:layout_height="39dp"
-                android:layout_weight="1"
-
-                android:background="@drawable/pink3_rectangle"
-                android:fontFamily="@font/myraid"
-                android:gravity="center_vertical"
-                android:paddingStart="15dp"
-                android:paddingEnd="15dp"
-                android:text="@string/username"
-                android:textColor="@color/white"
-                android:textSize="15sp"
-                tools:ignore="TextContrastCheck" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-            <TextView
-                android:id="@+id/password"
-                android:layout_width="192dp"
-                android:layout_height="39dp"
-                android:layout_weight="1"
-                android:background="@drawable/pink2_rectangle"
-                android:fontFamily="@font/myraid"
-                android:gravity="center_vertical"
-                android:paddingLeft="15dp"
-                android:paddingRight="15dp"
-                android:text="@string/password"
-                android:textColor="@color/white"
-                android:textSize="15sp"
-                tools:ignore="TextContrastCheck" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-            <TextView
-                android:id="@+id/email"
-                android:layout_width="192dp"
-                android:layout_height="39dp"
-                android:layout_weight="1"
-                android:background="@drawable/pink1_rectangle"
-                android:fontFamily="@font/myraid"
-                android:gravity="center_vertical"
-                android:paddingStart="15dp"
-                android:paddingEnd="15dp"
-                android:text="@string/email"
-                android:textColor="@color/white"
-                android:textSize="15sp"
-                tools:ignore="TextContrastCheck" />
-        </LinearLayout>
     <!-- *END OF USER COMPONENTS* -->
 
 
 
     <!-- *LOGIN BUTTON & QUESTION* -->
+    <LinearLayout
+        android:id="@+id/linear_create_info"
+        android:layout_width="265dp"
+        android:layout_height="231dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="40dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@+id/info_rectangle"
+        app:layout_constraintEnd_toEndOf="@+id/info_rectangle"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/info_rectangle"
+        app:layout_constraintTop_toTopOf="@+id/info_rectangle"
+        app:layout_constraintVertical_bias="0.701">
+
+        <EditText
+            android:id="@+id/newUserName"
+            android:layout_width="217dp"
+            android:layout_height="32dp"
+            android:layout_weight="1"
+
+            android:background="@drawable/pink3_rectangle"
+            android:fontFamily="@font/myraid"
+            android:gravity="center_vertical"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:hint="@string/username"
+            android:textColorHint="@color/white"
+            android:textSize="15sp"
+            tools:ignore="TextContrastCheck"
+            android:inputType="text"
+            android:autofillHints="username"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <EditText
+            android:id="@+id/newPassword"
+            android:layout_width="217dp"
+            android:layout_height="32dp"
+            android:layout_weight="1"
+            android:background="@drawable/pink2_rectangle"
+            android:fontFamily="@font/myraid"
+            android:gravity="center_vertical"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:hint="@string/password"
+            android:textColorHint="@color/white"
+            android:textSize="15sp"
+            tools:ignore="TextContrastCheck"
+            android:inputType="textPassword"
+            android:autofillHints="password"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="217dp"
+            android:layout_height="32dp"
+            android:layout_weight="1"
+            android:background="@drawable/pink1_rectangle"
+            android:fontFamily="@font/myraid"
+            android:gravity="center_vertical"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:hint="@string/email"
+            android:textColorHint="@color/white"
+            android:textSize="15sp"
+            tools:ignore="TextContrastCheck"
+            android:inputType="textEmailAddress"
+            android:autofillHints="emailAddress"/>
+    </LinearLayout>
+
     <LinearLayout
         android:id="@+id/linear_bottom"
         android:layout_width="323dp"
@@ -212,7 +196,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:fontFamily="@font/myraid"
-            android:gravity="right"
+            android:gravity="end"
             android:text="@string/made_account"
             android:textSize="19sp" />
 
@@ -223,7 +207,7 @@
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:fontFamily="@font/bs_bold"
-            android:gravity="left"
+            android:gravity="start"
             android:padding="9dp"
             android:text="@string/login"
             android:textColor="@color/signup_text_color"
@@ -246,12 +230,13 @@
             android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:fontFamily="@font/bs_bold"
             android:gravity="center"
+            android:paddingTop="20dp"
             android:text="@string/app_name"
             android:textColor="@color/blue_2"
-            android:fontFamily="@font/bs_bold"
             android:textSize="50sp"
-            android:paddingTop="20dp"/>
+            tools:ignore="TextContrastCheck" />
     </FrameLayout>
 
 

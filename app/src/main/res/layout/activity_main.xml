@@ -53,18 +53,18 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <!--NOTE: Rectangle behind login aspects-->
-        <TextView
-            android:id="@+id/info_rectangle"
-            android:layout_width="268dp"
-            android:layout_height="342dp"
-            android:background="@drawable/logo_rectangle"
-            android:textAlignment="center"
+    <TextView
+        android:id="@+id/info_rectangle"
+        android:layout_width="268dp"
+        android:layout_height="342dp"
+        android:background="@drawable/logo_rectangle"
+        android:textAlignment="center"
 
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.496"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <!-- *END OF GUIDELINES FOR RECTANGLES BEHIND LOGIN* -->
 
@@ -73,48 +73,49 @@
     <!-- *LOGIN COMPONENTS*-->
 
         <!--NOTE: LOGO-->
-        <ImageView
-            android:id="@+id/LOGO"
-            android:layout_width="143dp"
-            android:layout_height="114dp"
-            android:layout_marginStart="74dp"
-            android:layout_marginTop="37dp"
-            android:layout_marginEnd="21dp"
 
-            android:layout_marginBottom="222dp"
-            android:contentDescription="@string/app_name"
-            android:src="@drawable/logo"
-            app:layout_constraintBottom_toBottomOf="@+id/info_rectangle"
-            app:layout_constraintEnd_toEndOf="@+id/info_rectangle"
-            app:layout_constraintEnd_toStartOf="@id/right_guideline"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/info_rectangle"
-            app:layout_constraintTop_toTopOf="@+id/info_rectangle"
-            app:layout_constraintVertical_bias="0.031" />
+    <!--NOTE: LOGIN BUTTON
+    IMPORTANT: "android:onClick="login"" will need to be defined in Java -->
 
-        <!--NOTE: LOGIN BUTTON
-        IMPORTANT: "android:onClick="login"" will need to be defined in Java -->
-        <android.widget.Button
-            android:id="@+id/login_main_button"
-            android:layout_width="157dp"
-            android:layout_height="53dp"
-            android:layout_marginStart="63dp"
-            android:layout_marginTop="301dp"
-            android:layout_marginEnd="1dp"
-            android:background="@drawable/login_button_background"
-            android:fontFamily="@font/bs_bold"
-            android:gravity="center"
-            android:text="@string/login"
-            android:textColor="@color/white"
-            android:textSize="25sp"
+    <ImageView
+        android:id="@+id/LOGO"
+        android:layout_width="143dp"
+        android:layout_height="114dp"
+        android:layout_marginStart="63dp"
 
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/info_rectangle"
-            app:layout_constraintEnd_toStartOf="@id/right_guideline"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/info_rectangle"
-            app:layout_constraintTop_toTopOf="@+id/info_rectangle"
-            app:layout_constraintVertical_bias="0.008" />
+        android:layout_marginTop="37dp"
+        android:layout_marginEnd="62dp"
+        android:layout_marginBottom="222dp"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/logo2"
+        app:layout_constraintBottom_toBottomOf="@+id/info_rectangle"
+        app:layout_constraintEnd_toEndOf="@+id/info_rectangle"
+        app:layout_constraintStart_toStartOf="@+id/info_rectangle"
+        app:layout_constraintTop_toTopOf="@+id/info_rectangle"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <android.widget.Button
+        android:id="@+id/login_main_button"
+        android:layout_width="157dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="63dp"
+        android:layout_marginTop="301dp"
+        android:layout_marginEnd="1dp"
+        android:background="@drawable/login_button_background"
+        android:fontFamily="@font/bs_bold"
+        android:gravity="center"
+        android:text="@string/login"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/info_rectangle"
+        app:layout_constraintEnd_toStartOf="@id/right_guideline"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/info_rectangle"
+        app:layout_constraintTop_toTopOf="@+id/info_rectangle"
+        app:layout_constraintVertical_bias="0.008"
+        tools:ignore="TextContrastCheck" />
 
         <!-- NOTE: INFORMATION LAYOUT (USERNAME,PASSWORD,EMAIL) -->
         <LinearLayout
@@ -135,19 +136,20 @@
 
             <EditText
                 android:id="@+id/stringUserName"
-                android:hint="@string/username"
-                android:textColorHint="@color/white"
-                android:inputType="text"
                 android:layout_width="192dp"
-                android:layout_height="39dp"
+                android:layout_height="48dp"
                 android:layout_weight="1"
-
+                android:autofillHints="username"
                 android:background="@drawable/pink3_rectangle"
                 android:fontFamily="@font/myraid"
+
                 android:gravity="center_vertical"
+                android:hint="@string/username"
+                android:inputType="text"
                 android:paddingStart="15dp"
                 android:paddingEnd="15dp"
                 android:textColor="@color/white"
+                android:textColorHint="@color/white"
                 android:textSize="15sp"
                 tools:ignore="TextContrastCheck" />
 
@@ -159,20 +161,21 @@
             <!--android:text="@string/password"-->
             <EditText
                 android:id="@+id/stringPassword"
-                android:hint="@string/password"
-                android:textColorHint="@color/white"
                 android:layout_width="192dp"
-                android:layout_height="39dp"
+                android:layout_height="48dp"
                 android:layout_weight="1"
+                android:autofillHints="password"
                 android:background="@drawable/pink2_rectangle"
                 android:fontFamily="@font/myraid"
                 android:gravity="center_vertical"
+                android:hint="@string/password"
+                android:inputType="textPassword"
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
                 android:textColor="@color/white"
+                android:textColorHint="@color/white"
                 android:textSize="15sp"
-                tools:ignore="TextContrastCheck"
-                android:inputType="textPassword"/>
+                tools:ignore="TextContrastCheck" />
         </LinearLayout>
 
     <!-- *END OF LOGIN COMPONENTS* -->
@@ -197,7 +200,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:fontFamily="@font/myraid"
-            android:gravity="right"
+            android:gravity="end"
             android:text="@string/signup_question"
             android:textSize="19sp" />
 
@@ -208,7 +211,7 @@
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:fontFamily="@font/bs_bold"
-            android:gravity="left"
+            android:gravity="start"
             android:padding="9dp"
             android:text="@string/signup"
             android:textColor="@color/signup_text_color"
@@ -231,12 +234,13 @@
             android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:fontFamily="@font/bs_bold"
             android:gravity="center"
+            android:paddingTop="20dp"
             android:text="@string/app_name"
             android:textColor="@color/blue_2"
-            android:fontFamily="@font/bs_bold"
             android:textSize="50sp"
-            android:paddingTop="20dp"/>
+            tools:ignore="TextContrastCheck" />
     </FrameLayout>
 
     <!-- *FORGOT PASSWORD* -->
