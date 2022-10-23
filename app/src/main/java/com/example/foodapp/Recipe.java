@@ -7,55 +7,55 @@ public class Recipe{
     public String recipeName;
     public String mainIngredient;
     public String secondaryIngredient;
-    public float cookingTime;
+    public String cookingTime;
     public String servings;
     public float caloricValue;
     public String mealTime;
     public ArrayList<Ingredient> ingredientList = new ArrayList<Ingredient>();
     public ArrayList<String> instructions = new ArrayList<String>();
-    private File recipeFile;
-    private String imagePath;
+    private String[] recipeText;
+    //private String imagePath;
 
 
-    public Recipe(String recipePath, String imagePath){
-        this.recipeFile = new File(recipePath);
-        this.imagePath = imagePath;
-        read_file(recipeFile);
+    public Recipe(String[] recipeText){
+        this.recipeText = recipeText;
+        //this.imagePath = imagePath;
+        read_recipe();
     }
 
-    private void read_file(File fileName){
-        Scanner scan;
-        ArrayList<String> lines = new ArrayList<String>();
-        try{
-            scan = new Scanner(fileName);
-        }
-        catch(Exception e){
-            System.out.println("File not found... exiting");
-            return;
-        }
-        while (scan.hasNextLine()){
-            lines.add(scan.nextLine());
-        }
-        for (String l : lines){
-            System.out.println("I am line: " + l);
-            System.out.println(lines.size());
-        }
-        this.recipeName = lines.get(0);
-        this.mainIngredient = lines.get(1);
-        this.secondaryIngredient = lines.get(2);
-        this.cookingTime = Float.parseFloat(lines.get(3));
-        this.servings = lines.get(4);
-        this.caloricValue = Float.parseFloat(lines.get(5));
-        this.mealTime = lines.get(6);
-        String[] ingredients = lines.get(7).split(",");
+    private void read_recipe(){
+        //Scanner scan;
+        //ArrayList<String> lines = new ArrayList<String>();
+        //try{
+        //    scan = new Scanner(fileName);
+        //}
+        //catch(Exception e){
+          //  System.out.println("File not found... exiting");
+            //return;
+        //}
+        //while (scan.hasNextLine()){
+          //  lines.add(scan.nextLine());
+        //}
+        //for (String l : lines){
+          //  System.out.println("I am line: " + l);
+            //System.out.println(lines.size());
+        //}
+        this.recipeName = this.recipeText[0];
+        this.mainIngredient = this.recipeText[1];
+        this.secondaryIngredient = this.recipeText[2];
+        this.cookingTime = this.recipeText[3];
+        this.servings = this.recipeText[4];
+        this.caloricValue = Float.parseFloat(this.recipeText[5]);
+        this.mealTime = this.recipeText[6];
+        String[] ingredients = this.recipeText[7].split(",");
         for(String ingredient : ingredients){
             String[] parsed = ingredient.split(" ");
             ingredientList.add(new Ingredient(parsed[0], parsed[1], parsed[3], Float.parseFloat(parsed[2])));
         }
-        for(int i = 8; i < lines.size(); i++){
-            instructions.add(lines.get(i));
+        for(int i = 8; i < this.recipeText.length; i++){
+            instructions.add(this.recipeText[i]);
         }
-        scan.close();
+        //scan.close();
     }
     public void print_recipe(){
         System.out.println("TITLE: " + this.recipeName);
@@ -81,7 +81,7 @@ public class Recipe{
     public void add_instruction(String line){
         instructions.add(line);
     }
-    public String get_image_path(){
-        return this.imagePath;
-    }
+    //public String get_image_path(){
+      //  return this.imagePath;
+    //}
 }

@@ -1,13 +1,17 @@
 package com.example.foodapp;
 
+import android.content.Context;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class RecipeSearch {
-    private ArrayList<Recipe> recipes;
-    private HashMap<String, ArrayList<Recipe>> recipeHashMap;
+    public ArrayList<Recipe> recipes;
+    public HashMap<String, ArrayList<Recipe>> recipeHashMap;
+    public Context context;
 
-    public RecipeSearch(ArrayList<Recipe> recipes){
+    public RecipeSearch(ArrayList<Recipe> recipes, Context context){
+        this.context = context;
         this.recipes = recipes;
         this.recipeHashMap = make_map(this.recipes);
     }
@@ -31,6 +35,10 @@ public class RecipeSearch {
                     tempList.add(r);
                 }
             }
+            //System.out.println(i);
+            //for(Recipe r : tempList){
+            //    r.print_recipe();
+            //}
             temp.put(i, tempList);
         }
         return temp;
@@ -46,5 +54,8 @@ public class RecipeSearch {
             }
         }
         return null;
+    }
+    public void print_hash(){
+        this.recipeHashMap.forEach((k, v) -> System.out.println(k + " " + v.get(0).recipeName));
     }
 }
