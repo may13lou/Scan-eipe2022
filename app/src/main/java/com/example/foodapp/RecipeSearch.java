@@ -41,6 +41,7 @@ public class RecipeSearch {
             //}
             temp.put(i, tempList);
         }
+        System.out.println(temp);
         return temp;
     }
 
@@ -55,7 +56,7 @@ public class RecipeSearch {
         }
         return null;
     }
-    public void print_hash(){
-        this.recipeHashMap.forEach((k, v) -> System.out.println(k + " " + v.get(0).recipeName));
-    }
+    //public void print_hash(){
+      //  this.recipeHashMap.forEach((k, v) -> System.out.println(k + " " + v.get(0).recipeName));
+    //}
 }

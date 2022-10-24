@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashMap;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -31,6 +32,7 @@ public class RecipeFragment extends Fragment {
     private ArrayList<Recipe> recipes = new ArrayList<Recipe>();
     private RecipeSearch searchBar;
     private ArrayList<Recipe> resultOfSearch;
+    private HashMap<String, ArrayList<Recipe>> searchMap;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -57,8 +59,40 @@ public class RecipeFragment extends Fragment {
             ex.printStackTrace();
             return null;
         }
-        String[] splitContent = content.split("\n");
+        String[] splitContent = content.split("\r\n");
         return splitContent;
+    }
+    private HashMap<String, ArrayList<Recipe>> make_map(ArrayList<Recipe> recipes){
+        HashMap<String, ArrayList<Recipe>> temp = new HashMap<String, ArrayList<Recipe>>();
+        ArrayList<String> listOfIngredients = new ArrayList<String>();
+
+        for (Recipe r : recipes){
+            if (!listOfIngredients.contains(r.mainIngredient)){
+                listOfIngredients.add(r.mainIngredient);
+            }
+            if (!listOfIngredients.contains(r.secondaryIngredient)){
+                listOfIngredients.add(r.secondaryIngredient);
+            }
+        }
+        for(String i : listOfIngredients){
+            ArrayList<Recipe> tempList = new ArrayList<Recipe>();
+            for(Recipe r : recipes){
+                if(i.equals(r.mainIngredient) || i.equals(r.secondaryIngredient)){
+                    tempList.add(r);
+                }
+            }
+            //System.out.println(i);
+            //for(Recipe r : tempList){
+            //    r.print_recipe();
+            //}
+            temp.put(i, tempList);
+        }
+        //System.out.println(temp);
+        return temp;
+    }
+
+    public ArrayList<Recipe> search_recipe(String ingredient){
+        return this.searchMap.get(ingredient);
     }
 
     /**
@@ -89,9 +123,16 @@ public class RecipeFragment extends Fragment {
         for(String[] recipe : recipeTexts){
             recipes.add(new Recipe(recipe));
         }
-        searchBar = new RecipeSearch(recipes, requireContext());
-        searchBar.print_hash();
-        System.out.println(searchBar.recipeHashMap.get("vegetable"));
+        searchMap = make_map(recipes);
+        //System.out.println(searchMap);
+        //for(String key : searchMap.keySet()){
+          //  System.out.println(key);
+            //System.out.println(searchMap.get(key).toString());
+        //}
+        //System.out.println(searchMap.get("beef\r"));
+        //System.out.println(search_recipe("beef"));
+
+
 
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
