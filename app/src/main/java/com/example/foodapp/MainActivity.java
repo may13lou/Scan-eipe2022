@@ -1,32 +1,32 @@
 package com.example.foodapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import android.widget.LinearLayout;
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.ScaleAnimation;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity
 {
     /* INITIALIZE */
     private Button signUpButtonMain;
     private Button loginButtonMain;
-    private EditText usernameMain;
+    private EditText emailMain;
     private EditText passwordMain;
 
-
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -58,10 +58,12 @@ public class MainActivity extends AppCompatActivity
 
         /* VARIABLES AND INITIALIZATION (MUST BE AFTER PAGE SETUP) */
         
-            usernameMain = findViewById(R.id.stringUserName);
+            emailMain = findViewById(R.id.stringEmail);
             passwordMain= findViewById(R.id.stringPassword);
             loginButtonMain = findViewById(R.id.login_main_button);
             signUpButtonMain = findViewById(R.id.signup_button);
+            mAuth = FirebaseAuth.getInstance();
+
 
         /* END OF VARIABLES AND INITIALIZATION */
 
@@ -85,7 +87,11 @@ public class MainActivity extends AppCompatActivity
                 @Override
                 public void onClick(View view)
                 {
-                    checkLogin(usernameMain.getText().toString(),passwordMain.getText().toString());
+                    //Getting Text from Fields
+                    String emailString = emailMain.getText().toString().trim();
+                    String passwordString = passwordMain.getText().toString().trim();
+ 
+                    validateLogin(emailString,passwordString);
                 }
             });
         /* END OF LINKING TO PAGES */
@@ -94,6 +100,48 @@ public class MainActivity extends AppCompatActivity
 
 
     /* FUNCTIONS */
+    //LOGIN VALIDATION FUNCTION 2.0
+    private void validateLogin(String email, String pass)
+    {
+        //CHECKS FOR EMPTY EMAIL FIELD AND VALID FORMAT
+        if(email.isEmpty())
+        {
+            emailMain.setError("Please enter a email.");
+            emailMain.requestFocus();
+            return;
+        }
+        if(!(Patterns.EMAIL_ADDRESS.matcher(email).matches())) //does not match email pattern
+        {
+            emailMain.setError("Please enter a VALID email.");
+            emailMain.requestFocus();
+            return;
+        }
+
+        //CHECKS FOR EMPTY PASSWORD FIELD
+        if(pass.isEmpty())
+        {
+            passwordMain.setError("Please enter a password.");
+            passwordMain.requestFocus();
+            return;
+        }
+
+        //NOTE: CHECKS WITH DATABASE TO SEE IF LOGIN IS VALID
+        mAuth.signInWithEmailAndPassword(email,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task)
+            {
+                if(task.isSuccessful())
+                {
+                    openHomeActivity();
+                }
+                else
+                {
+                    Toast.makeText(MainActivity.this,"Username or Password is incorrect. Please try again.",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+
     //FUNCTION TO LINK TO NEW USER ACTIVITY
     public void openNewUserActivity()
     {
@@ -106,20 +154,6 @@ public class MainActivity extends AppCompatActivity
     {
         Intent intent = new Intent(this, HomeActivity.class);
         startActivity(intent);
-    }
-
-    //LOGIN VALIDATION FUNCTION
-    public void checkLogin(String userName, String userPassword)
-    {
-        /* NOTE: user = "admin" and password = "testing" for login to work */
-        if((userName.equals("admin")) && (userPassword.equals("testing")))
-        {
-            openHomeActivity();
-        }
-        else
-        {
-            Toast.makeText(MainActivity.this, "Username or Password is incorrect. Please try again.",Toast.LENGTH_SHORT).show();
-        }
     }
 
 }

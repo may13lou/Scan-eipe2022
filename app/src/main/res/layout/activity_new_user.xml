@@ -127,6 +127,7 @@
             android:paddingStart="15dp"
             android:paddingEnd="15dp"
             android:hint="@string/username"
+            android:textColor="@color/white"
             android:textColorHint="@color/white"
             android:textSize="15sp"
             tools:ignore="TextContrastCheck"
@@ -150,6 +151,7 @@
             android:paddingRight="15dp"
             android:hint="@string/password"
             android:textColorHint="@color/white"
+            android:textColor="@color/white"
             android:textSize="15sp"
             tools:ignore="TextContrastCheck"
             android:inputType="textPassword"
@@ -161,7 +163,7 @@
             android:layout_weight="1" />
 
         <EditText
-            android:id="@+id/email"
+            android:id="@+id/newEmail"
             android:layout_width="217dp"
             android:layout_height="32dp"
             android:layout_weight="1"
@@ -171,7 +173,8 @@
             android:paddingStart="15dp"
             android:paddingEnd="15dp"
             android:hint="@string/email"
-            android:textColorHint="@color/white"
+            android:textColorHint="@color/pink_4"
+            android:textColor="@color/pink_4"
             android:textSize="15sp"
             tools:ignore="TextContrastCheck"
             android:inputType="textEmailAddress"

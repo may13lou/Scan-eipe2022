@@ -135,7 +135,7 @@
             app:layout_constraintVertical_bias="0.645">
 
             <EditText
-                android:id="@+id/stringUserName"
+                android:id="@+id/stringEmail"
                 android:layout_width="192dp"
                 android:layout_height="48dp"
                 android:layout_weight="1"
@@ -144,7 +144,7 @@
                 android:fontFamily="@font/myraid"
 
                 android:gravity="center_vertical"
-                android:hint="@string/username"
+                android:hint="@string/email"
                 android:inputType="text"
                 android:paddingStart="15dp"
                 android:paddingEnd="15dp"
