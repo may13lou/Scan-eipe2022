@@ -1,10 +1,14 @@
 package com.example.foodapp;
 
+import android.content.ClipData;
 import android.content.Context;
+import androidx.appcompat.app.AppCompatActivity;
 import android.content.res.AssetManager;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +20,11 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
+import java.util.List;
+
+import android.util.Log;
+import android.widget.SearchView;
+import android.widget.Toast;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -33,6 +42,13 @@ public class RecipeFragment extends Fragment {
     private RecipeSearch searchBar;
     private ArrayList<Recipe> resultOfSearch;
     private HashMap<String, ArrayList<Recipe>> searchMap;
+    private SearchView searchView;
+    private RecyclerView recyclerView;
+    private List<ClipData.Item> itemList;
+    //private ItemAdapter itemAdapter;
+
+
+
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -59,7 +75,9 @@ public class RecipeFragment extends Fragment {
             ex.printStackTrace();
             return null;
         }
-        String[] splitContent = content.split("\r\n");
+
+        /* IMPORTANT DO NOT OVERLOOK: this version works "\n" but on Rodrigo's "\r\n" */
+        String[] splitContent = content.split("\n");
         return splitContent;
     }
     private HashMap<String, ArrayList<Recipe>> make_map(ArrayList<Recipe> recipes){
@@ -114,13 +132,17 @@ public class RecipeFragment extends Fragment {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
+        //setContentView(R.layout.fragment_recipe);
         recipeTexts.add(loadTextFileFromAssets("beefWellington.txt"));
         recipeTexts.add(loadTextFileFromAssets("vegetableStirFry.txt"));
         recipeTexts.add(loadTextFileFromAssets("bellPepperKetoNachos.txt"));
 
+
         for(String[] recipe : recipeTexts){
+            Log.e("recipe", recipe[0]);
             recipes.add(new Recipe(recipe));
         }
         searchMap = make_map(recipes);
@@ -130,7 +152,7 @@ public class RecipeFragment extends Fragment {
             //System.out.println(searchMap.get(key).toString());
         //}
         //System.out.println(searchMap.get("beef\r"));
-        //System.out.println(search_recipe("beef"));
+        System.out.println(search_recipe("beef"));
 
 
 
@@ -138,12 +160,25 @@ public class RecipeFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+
+        //SEARCH CODE
+
+
+
     }
 
+
+
+
+
+    //FRAGMENT LINK
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_recipe, container, false);
     }
+
+
 }

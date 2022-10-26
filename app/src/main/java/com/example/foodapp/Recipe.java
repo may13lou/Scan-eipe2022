@@ -1,5 +1,6 @@
 package com.example.foodapp;
 import java.util.ArrayList;
+import android.util.Log;
 import java.util.Scanner;
 import java.io.File;
 
@@ -40,6 +41,7 @@ public class Recipe{
           //  System.out.println("I am line: " + l);
             //System.out.println(lines.size());
         //}
+        Log.e("inside recipe", this.recipeText[0]);
         this.recipeName = this.recipeText[0];
         this.mainIngredient = this.recipeText[1];
         this.secondaryIngredient = this.recipeText[2];
