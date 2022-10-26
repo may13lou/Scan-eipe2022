@@ -191,8 +191,8 @@
             <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="210dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="10dp">
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="20dp">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -208,35 +208,59 @@
                         android:layout_marginTop="100dp"
                         android:backgroundTint="@color/white"
                         android:padding="4dp"
-                        android:text="food1"
-                        android:src="@drawable/pizza_png"
                         android:scaleType="fitCenter"
+                        android:src="@drawable/pizza_png"
+                        android:text="food1"
                         android:textColor="@color/black"
 
                         />
 
-                    <Button
+                    <ImageButton
                         android:id="@+id/co"
-                        android:layout_width="110dp"
+                        android:layout_width="123dp"
                         android:layout_height="150dp"
                         android:layout_margin="10dp"
+                        android:layout_marginTop="100dp"
+                        android:background="@color/white"
                         android:backgroundTint="@color/white"
                         android:padding="4dp"
-                        android:text="food2"
-
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/penne_pasta"
+                        android:text="food1"
                         android:textColor="@color/black"
 
                         />
 
-                    <Button
-                        android:id="@+id/L"
-                        android:layout_width="110dp"
-                        android:layout_height="150dp"
+                    <ImageButton
+                        android:id="@+id/beef"
+                        android:layout_width="109dp"
+                        android:layout_height="151dp"
                         android:layout_margin="10dp"
+                        android:layout_marginTop="100dp"
+                        android:background="@color/white"
                         android:backgroundTint="@color/white"
                         android:padding="4dp"
-                        android:text="food3"
-                        android:textColor="@color/black" />
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/beef_wellington"
+                        android:text="food1"
+                        android:textColor="@color/black"
+
+                        />
+                    <ImageButton
+                        android:id="@+id/pancake"
+                        android:layout_width="109dp"
+                        android:layout_height="151dp"
+                        android:layout_margin="10dp"
+                        android:layout_marginTop="100dp"
+                        android:background="@color/white"
+                        android:backgroundTint="@color/white"
+                        android:padding="4dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/pancake_png"
+                        android:text="food1"
+                        android:textColor="@color/black"
+
+                        />
 
                     <Button
                         android:id="@+id/F"
