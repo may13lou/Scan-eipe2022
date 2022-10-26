@@ -168,7 +168,7 @@
                     android:text="Recommended:"
                     android:fontFamily="@font/bs_bold"
                     android:textColor="@color/green_2"
-                    android:textSize="15sp"
+                    android:textSize="20sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -177,12 +177,12 @@
                     android:id="@+id/textView7"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="200dp"
+                    android:layout_marginStart="155dp"
                     android:layout_marginTop="20dp"
                     android:fontFamily="@font/myraid"
                     android:text="Show More"
                     android:textColor="@color/green_1"
-                    android:textSize="10dp"
+                    android:textSize="14dp"
                     app:layout_constraintStart_toEndOf="@+id/textView2"
                     app:layout_constraintTop_toTopOf="parent" />
 

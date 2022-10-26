@@ -12,7 +12,8 @@
         android:id="@+id/fragmentContainer"
         android:layout_height="match_parent"
         android:layout_above="@+id/bottomBar"
-        />
+        android:name="com.example.foodapp.HomeFragment"
+        tools:layout="@layout/fragment_home" />
 
     <LinearLayout
         android:id="@+id/bottomBar"
@@ -22,6 +23,7 @@
         android:weightSum="4"
         android:paddingStart="20dp"
         android:paddingEnd="20dp"
+        android:paddingBottom="20dp"
         android:paddingTop="15dp"
         android:elevation="10dp"
         android:gravity="center"
