@@ -152,7 +152,7 @@ public class MainActivity extends AppCompatActivity
     //FUNCTION TO LINK TO HOME SCREEN ACTIVITY  NOTE: FOR NOW FOR LINKING PURPOSES I LINKED IT TO LANDING PAGE
     public void openHomeActivity()
     {
-        Intent intent = new Intent(this, HomeActivity.class);
+        Intent intent = new Intent(this, LandingPageActivity.class);
         startActivity(intent);
     }
 
