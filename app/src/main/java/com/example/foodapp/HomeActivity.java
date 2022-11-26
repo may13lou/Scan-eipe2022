@@ -68,7 +68,7 @@ public class HomeActivity extends AppCompatActivity
                     RecipeText.setVisibility(View.GONE);
                     ProfileText.setVisibility(View.GONE);
 
-                    FavImage.setImageResource(R.drawable.favorite_black);
+                    FavImage.setImageResource(R.drawable.scanning_black);
                     RecipeImage.setImageResource(R.drawable.recipe_black);
                     ProfileImage.setImageResource(R.drawable.profile_black);
 
@@ -117,7 +117,7 @@ public class HomeActivity extends AppCompatActivity
 
                     //select home tab
                     FavText.setVisibility(View.VISIBLE);
-                    FavImage.setImageResource(R.drawable.favorite);
+                    FavImage.setImageResource(R.drawable.scanning);
                     FavLayout.setBackgroundResource(R.drawable.round_back_fave_100);
 
                     //Creation of the animation effect
@@ -149,7 +149,7 @@ public class HomeActivity extends AppCompatActivity
                     ProfileText.setVisibility(View.GONE);
 
                     homeImage.setImageResource(R.drawable.home_black);
-                    FavImage.setImageResource(R.drawable.favorite_black);
+                    FavImage.setImageResource(R.drawable.scanning_black);
                     ProfileImage.setImageResource(R.drawable.profile_black);
 
                     homeLayout.setBackgroundColor(getResources().getColor(android.R.color.transparent));
@@ -189,7 +189,7 @@ public class HomeActivity extends AppCompatActivity
                     RecipeText.setVisibility(View.GONE);
 
                     homeImage.setImageResource(R.drawable.home_black);
-                    FavImage.setImageResource(R.drawable.favorite_black);
+                    FavImage.setImageResource(R.drawable.scanning_black);
                     RecipeImage.setImageResource(R.drawable.recipe_black);
 
                     homeLayout.setBackgroundColor(getResources().getColor(android.R.color.transparent));

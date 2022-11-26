@@ -110,7 +110,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="20dp"
                 android:adjustViewBounds="true"
-                android:src="@drawable/favorite_black"/>
+                android:src="@drawable/scanning_black"/>
 
             <TextView
                 android:id="@+id/FavText"
@@ -118,7 +118,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:text="Favorite"
+                android:text="Scanning/text"
                 android:textColor="#FFFFFF"
                 android:textSize="16sp"
                 android:textStyle="bold"

@@ -22,6 +22,7 @@ public class HomeFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private EditText changeColor;
+    private EditText searchbar;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -56,12 +57,18 @@ public class HomeFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View fragmentView = inflater.inflate(R.layout.fragment_home, container, false);
+        searchbar = (EditText) fragmentView.findViewById(R.id.editTextTextPersonName);
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false);
+
+
+        return fragmentView;
+        //return inflater.inflate(R.layout.fragment_home, container, false);
     }
 }
