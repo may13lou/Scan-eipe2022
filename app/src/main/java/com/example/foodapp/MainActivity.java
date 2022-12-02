@@ -166,6 +166,13 @@ public class MainActivity extends AppCompatActivity
         });
     }
 
+    //WILL PREVENT FROM GOING BACK AFTER LOGOUT
+    @Override
+    public void onBackPressed()
+    {
+
+    }
+
     //FUNCTION TO LINK TO NEW USER ACTIVITY
     public void openNewUserActivity()
     {

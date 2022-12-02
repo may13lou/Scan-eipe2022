@@ -95,6 +95,7 @@ ProfileFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_profile, container, false);
     }
 
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
     {
@@ -117,6 +118,7 @@ ProfileFragment extends Fragment {
             }
         });
 
+
         //CHANGE PASSWORD
         changePasswordButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,9 +127,9 @@ ProfileFragment extends Fragment {
             }
         });
 
+        //GETTING USER INFORMATION
         userID = user.getUid();
         usernameTextView = (TextView) view.findViewById(R.id.profile_email);
-
         //GET DATA
         databaseReference.child(userID).addListenerForSingleValueEvent(new ValueEventListener()
         {
