@@ -77,40 +77,8 @@ public class RecipeFragment extends Fragment {
         }
 
         /* IMPORTANT DO NOT OVERLOOK: this version works "\n" but on Rodrigo's "\r\n" */
-        String[] splitContent = content.split("\n");
+        String[] splitContent = content.split("\r\n");
         return splitContent;
-    }
-    private HashMap<String, ArrayList<Recipe>> make_map(ArrayList<Recipe> recipes){
-        HashMap<String, ArrayList<Recipe>> temp = new HashMap<String, ArrayList<Recipe>>();
-        ArrayList<String> listOfIngredients = new ArrayList<String>();
-
-        for (Recipe r : recipes){
-            if (!listOfIngredients.contains(r.mainIngredient)){
-                listOfIngredients.add(r.mainIngredient);
-            }
-            if (!listOfIngredients.contains(r.secondaryIngredient)){
-                listOfIngredients.add(r.secondaryIngredient);
-            }
-        }
-        for(String i : listOfIngredients){
-            ArrayList<Recipe> tempList = new ArrayList<Recipe>();
-            for(Recipe r : recipes){
-                if(i.equals(r.mainIngredient) || i.equals(r.secondaryIngredient)){
-                    tempList.add(r);
-                }
-            }
-            //System.out.println(i);
-            //for(Recipe r : tempList){
-            //    r.print_recipe();
-            //}
-            temp.put(i, tempList);
-        }
-        //System.out.println(temp);
-        return temp;
-    }
-
-    public ArrayList<Recipe> search_recipe(String ingredient){
-        return this.searchMap.get(ingredient);
     }
 
     /**
@@ -145,15 +113,13 @@ public class RecipeFragment extends Fragment {
             Log.e("recipe", recipe[0]);
             recipes.add(new Recipe(recipe));
         }
-        searchMap = make_map(recipes);
+        searchBar = new RecipeSearch(recipes, this.getContext());
         //System.out.println(searchMap);
         //for(String key : searchMap.keySet()){
           //  System.out.println(key);
             //System.out.println(searchMap.get(key).toString());
         //}
         //System.out.println(searchMap.get("beef\r"));
-        System.out.println(search_recipe("beef"));
-
 
 
         if (getArguments() != null) {
