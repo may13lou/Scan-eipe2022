@@ -15,7 +15,8 @@ public class Recipe{
     public ArrayList<Ingredient> ingredientList = new ArrayList<Ingredient>();
     public ArrayList<String> instructions = new ArrayList<String>();
     private String[] recipeText;
-    //private String imagePath;
+
+    private String imagePath;
 
 
     public Recipe(String[] recipeText){

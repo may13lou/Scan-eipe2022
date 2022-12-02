@@ -1,6 +1,6 @@
 <resources>
     <!-- DEFAULT STRINGS -->
-    <string name="app_name">Sca-ceipe</string>
+    <string name="app_name">Scan-eipe</string>
 
     <!-- LOGIN INFORMATION STRINGS -->
     <string name="username">user name</string>
@@ -21,5 +21,18 @@
     <string name="landing_page_title">Welcome to Sca-ceipe!</string>
     <string name="landing_page_welcome">Ready to make meal prep a breeze?</string>
     <string name="landing_page_continue">Let\'s go!</string>
+
+    <!-- PROFILE PAGE STRINGS -->
+    <string name="profile_information"><u>PROFILE INFORMATION</u></string>
+    <string name="USER">"USER" !</string>
+    <string name="profile_username">user name:</string>
+    <string name="profile_password">password:</string>
+    <string name="profile_change_button">CHANGE PASSWORD</string>
+    <string name="logout">LOG OUT</string>
+
+    <!-- FORGOT PASSWORD STRINGS -->
+    <string name="forgotPassword">Please enter your email below.</string>
+    <string name="submit">SUBMIT</string>
+    <string name="enterEmail">enter email here</string>
 
 </resources>

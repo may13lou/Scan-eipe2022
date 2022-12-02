@@ -4,12 +4,16 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.view.Window;
+import android.graphics.RenderEffect;
 
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
@@ -18,51 +22,56 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+
+
 public class MainActivity extends AppCompatActivity
 {
     /* INITIALIZE */
     private Button signUpButtonMain;
     private Button loginButtonMain;
+    private Button forgotPasswordButtonMain;
     private EditText emailMain;
     private EditText passwordMain;
-
     private FirebaseAuth mAuth;
+    public static final int FLAG_BLUR_BEHIND = 1;
+    public static final int FLAG_DIM_BEHIND = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         /* MAIN PAGE SET-UP */
 
-            //START UP DEFAULT -> DO NOT DELETE
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_main);
+        //START UP DEFAULT -> DO NOT DELETE
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
-            //TAKES AWAY TOP BAR
-            try
-            {
-                this.getSupportActionBar().hide();
-            }
-            catch(Exception e) {
-                e.printStackTrace();
-            }
+        //TAKES AWAY TOP BAR
+        try
+        {
+            this.getSupportActionBar().hide();
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
 
-            //ANIMATIONS WITH YoYo LIBRARY -> CHECK DEPENDENCIES
-            YoYo.with(Techniques.Bounce)
-                    .duration(1800)
-                    .repeat(100)
-                    .playOn(findViewById(R.id.signup_button));
+        //ANIMATIONS WITH YoYo LIBRARY -> CHECK DEPENDENCIES
+        YoYo.with(Techniques.Bounce)
+                .duration(1800)
+                .repeat(100)
+                .playOn(findViewById(R.id.signup_button));
 
         /* END OF MAIN PAGE SET-UP */
 
 
 
         /* VARIABLES AND INITIALIZATION (MUST BE AFTER PAGE SETUP) */
-        
-            emailMain = findViewById(R.id.stringEmail);
-            passwordMain= findViewById(R.id.stringPassword);
-            loginButtonMain = findViewById(R.id.login_main_button);
-            signUpButtonMain = findViewById(R.id.signup_button);
-            mAuth = FirebaseAuth.getInstance();
+
+        emailMain = findViewById(R.id.stringEmail);
+        passwordMain= findViewById(R.id.stringPassword);
+        loginButtonMain = findViewById(R.id.login_main_button);
+        signUpButtonMain = findViewById(R.id.signup_button);
+        forgotPasswordButtonMain = findViewById(R.id.forgetPassword);
+        mAuth = FirebaseAuth.getInstance();
 
 
         /* END OF VARIABLES AND INITIALIZATION */
@@ -71,35 +80,50 @@ public class MainActivity extends AppCompatActivity
 
         /* LINKING TO PAGES */
 
-            //CODE TO SIGNUP BUTTON LINK TO NEW USER
-            signUpButtonMain.setOnClickListener(new View.OnClickListener()
+        //CODE TO SIGNUP BUTTON LINK TO NEW USER
+        signUpButtonMain.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
             {
-                @Override
-                public void onClick(View view)
-                {
-                    openNewUserActivity();
-                }
-            });
+                openNewUserActivity();
+            }
+        });
 
-            //CODE TO LOGIN BUTTON TO GET INTO HOME SCREEN
-            loginButtonMain.setOnClickListener(new View.OnClickListener()
+        //CODE TO LOGIN BUTTON TO GET INTO HOME SCREEN
+        loginButtonMain.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
             {
-                @Override
-                public void onClick(View view)
-                {
-                    //Getting Text from Fields
-                    String emailString = emailMain.getText().toString().trim();
-                    String passwordString = passwordMain.getText().toString().trim();
- 
-                    validateLogin(emailString,passwordString);
-                }
-            });
+                //Getting Text from Fields
+                String emailString = emailMain.getText().toString().trim();
+                String passwordString = passwordMain.getText().toString().trim();
+
+                validateLogin(emailString,passwordString);
+            }
+        });
+        //CODE TO forgotPassword BUTTON TO GET INTO HOME SCREEN
+        forgotPasswordButtonMain.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                getWindow().addFlags(WindowManager.LayoutParams.FLAG_BLUR_BEHIND);
+                openForgotPasswordActivity();
+            }
+        });
         /* END OF LINKING TO PAGES */
     }
 
 
 
     /* FUNCTIONS */
+
+    public void setBlurBehindRadius (int blurBehindRadius)
+    {
+
+    }
     //LOGIN VALIDATION FUNCTION 2.0
     private void validateLogin(String email, String pass)
     {
@@ -153,6 +177,13 @@ public class MainActivity extends AppCompatActivity
     public void openHomeActivity()
     {
         Intent intent = new Intent(this, LandingPageActivity.class);
+        startActivity(intent);
+    }
+
+    //FUNCTION TO LINK TO FORGOT PASSWORD SCREEN ACTIVITY
+    public void openForgotPasswordActivity()
+    {
+        Intent intent = new Intent(this, ForgotPasswordActivity.class);
         startActivity(intent);
     }
 

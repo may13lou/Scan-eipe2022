@@ -19,6 +19,7 @@
     <color name="green_3">#45625c</color>
     <color name="blue_1">#a3d2d5</color>
     <color name="blue_2">#6ba5aa</color>
+    <color name="translucent">#A3131306</color>
 
     <!-- BLAINE COLORS -->
     <color name="home">#FF9800</color>
