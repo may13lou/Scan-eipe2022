@@ -201,6 +201,7 @@
             android:layout_weight="1"
             android:fontFamily="@font/myraid"
             android:gravity="end"
+            android:textColor="@color/black"
             android:text="@string/signup_question"
             android:textSize="19sp" />
 
