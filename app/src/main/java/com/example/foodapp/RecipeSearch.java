@@ -4,6 +4,8 @@ import android.content.Context;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class RecipeSearch {
     public ArrayList<Recipe> recipes;
@@ -59,4 +61,9 @@ public class RecipeSearch {
     //public void print_hash(){
       //  this.recipeHashMap.forEach((k, v) -> System.out.println(k + " " + v.get(0).recipeName));
     //}
+
+    public Map<String, ArrayList<Recipe>> get_recipe_map(){
+        return this.recipeHashMap;
+    }
+    public ArrayList<Recipe> get_recipe_list (){ return this.recipes; }
 }
