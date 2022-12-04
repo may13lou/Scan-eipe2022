@@ -1,9 +1,11 @@
 package com.example.foodapp;
 
 import android.graphics.drawable.AnimationDrawable;
+import android.media.Image;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -11,6 +13,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.TextView;
+
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,7 +31,11 @@ public class HomeFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
     private EditText changeColor;
     private EditText searchbar;
+    private BottomSheetDialog mBottomSheetDialog;
 
+    private ImageButton ImageButton;
+    private TextView Text;
+    private FragmentManager fm;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -55,10 +65,7 @@ public class HomeFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
 
     }
 
@@ -68,6 +75,15 @@ public class HomeFragment extends Fragment {
         View fragmentView = inflater.inflate(R.layout.fragment_home, container, false);
         searchbar = (EditText) fragmentView.findViewById(R.id.editTextTextPersonName);
         // Inflate the layout for this fragment
+        ImageButton= (ImageButton) fragmentView.findViewById(R.id.c);
+        mBottomSheetDialog=new BottomSheetDialog(getActivity());
+
+        //Text=(TextView) fragmentView.getRootView().findViewById(R.id.text1);
+
+        //TextView text = (TextView) fragmentView.findViewById(R.id.text1);
+
+
+
         searchbar.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -76,7 +92,7 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                System.out.println(charSequence);
+
             }
 
             @Override
@@ -84,9 +100,23 @@ public class HomeFragment extends Fragment {
 
             }
         });
+        ImageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+                View sheetView = getActivity().getLayoutInflater().inflate(R.layout.fragment_bottom_sheet, null);
+                mBottomSheetDialog.setContentView(sheetView);
+                mBottomSheetDialog.show();
+               // Text.setText("This is a test for the button");
+
+                //View sheetView = getActivity().getLayoutInflater().inflate(R.layout.fragment_food, null);
+            }
+        });
 
         return fragmentView;
         //return inflater.inflate(R.layout.fragment_home, container, false);
     }
+
+
+
 }
