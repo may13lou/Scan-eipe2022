@@ -31,16 +31,16 @@ public class LandingPageActivity extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
-                openLoginActivity();
+                openTransitionActivity();
             }
         });
 
     }
 
     //FUNCTION TO LINK TO NEW USER ACTIVITY
-    public void openLoginActivity()
+    public void openTransitionActivity()
     {
-        Intent intent = new Intent(this, HomeActivity.class);
+        Intent intent = new Intent(this, Transition.class);
         startActivity(intent);
     }
 }

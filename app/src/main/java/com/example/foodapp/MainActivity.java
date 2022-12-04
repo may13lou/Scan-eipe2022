@@ -40,7 +40,6 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         /* MAIN PAGE SET-UP */
-
         //START UP DEFAULT -> DO NOT DELETE
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);

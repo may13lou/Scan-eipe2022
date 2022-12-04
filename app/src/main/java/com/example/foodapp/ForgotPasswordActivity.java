@@ -54,7 +54,6 @@ public class ForgotPasswordActivity extends Activity
         //INITIALIZE
         emailForgot = findViewById(R.id.forgot_Email);
         submitButtonForgot = findViewById(R.id.forgot_SubmitButton);
-        exitButtonForgot = findViewById(R.id.forgot_exit);
         progressBarForgot = findViewById(R.id.progressBar2);
         auth = FirebaseAuth.getInstance();
         progressBarForgot.setVisibility(View.INVISIBLE);

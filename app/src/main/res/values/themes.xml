@@ -19,6 +19,11 @@
         <item name = "android:windowCloseOnTouchOutside">true</item>
         <item name = "android:windowBackground">@color/translucent</item>
     </style>
+    <style name="Theme.FoodApp.White">
+        <item name = "android:windowIsTranslucent">false</item>
+        <item name = "android:windowCloseOnTouchOutside">true</item>
+        <item name = "android:windowBackground">@color/white</item>
+    </style>
     <style name="Theme.FoodApp.Custom.Transparent">
         <item name = "android:windowIsTranslucent">true</item>
         <item name = "android:windowCloseOnTouchOutside">true</item>

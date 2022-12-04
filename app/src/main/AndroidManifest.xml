@@ -54,6 +54,9 @@
         <activity
             android:name=".ReceipePop"
             android:theme="@style/Theme.FoodApp.Custom.Transparent" />
+        <activity
+            android:name=".Transition"
+            android:theme="@style/Theme.FoodApp.White" />
     </application>
 
 </manifest>
