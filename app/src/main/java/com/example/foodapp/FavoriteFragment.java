@@ -1,12 +1,25 @@
 package com.example.foodapp;
 
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,6 +36,12 @@ public class FavoriteFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    //VARIABLES
+    ConstraintLayout constraintLayout;
+    AnimationDrawable animationDrawable;
+    Button cameraButton;
+    Button scanTextButton;
 
     public FavoriteFragment() {
         // Required empty public constructor
@@ -58,7 +77,30 @@ public class FavoriteFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        //View view = inflater.inflate(R.layout.fragment_favorite,container,false);
+        //cameraButton = view.findViewById(R.id.camera);
+        //constraintLayout = view.findViewById(R.id.Favorite);
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_favorite, container, false);
     }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
+    {
+
+        //ASSIGNMENTS
+        //constraintLayout = view.findViewById(R.id.Favorite);
+        //animationDrawable = (AnimationDrawable) constraintLayout.getBackground();
+
+        //CHANGE VALUES FOR BACKGROUND
+        //animationDrawable.setEnterFadeDuration(2500);
+        //animationDrawable.setExitFadeDuration(5000);
+        //animationDrawable.start();
+
+
+
+
+    }
+
+
 }
