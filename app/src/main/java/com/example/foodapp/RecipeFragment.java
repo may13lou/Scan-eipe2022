@@ -1,37 +1,25 @@
 package com.example.foodapp;
 
 import android.content.ClipData;
-import android.content.Context;
 
-import androidx.annotation.ContentView;
-import androidx.appcompat.app.AppCompatActivity;
+import android.content.Intent;
 import android.content.res.AssetManager;
 import android.os.Bundle;
 
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.io.Console;
 import java.util.ArrayList;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import android.util.Log;
 import android.widget.AdapterView;
-import android.widget.EditText;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -145,10 +133,6 @@ public class RecipeFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-
-        //SEARCH CODE
-
-
     }
 
 
@@ -195,13 +179,39 @@ public class RecipeFragment extends Fragment {
                 //this returns the recipe associated with the click Since it will show every recipe associated with the search
                 Recipe clickedRecipe = (Recipe) adapterView.getItemAtPosition(i);
                 clickedRecipe.print_recipe();
+                String clickedRecipeName = (clickedRecipe.getInfoFromRecipe());
+
+                switch(clickedRecipeName)
+                {
+                    case "Beef Wellington":
+                        openIngredientPopUp(clickedRecipeName);
+                        break;
+
+                    case "Bell Pepper Keto Nachos":
+                        openIngredientPopUp(clickedRecipeName);
+                        break;
+
+                    case "Vegetable Stir Fry":
+                        openIngredientPopUp(clickedRecipeName);
+                        break;
+
+                    default:
+                        Toast.makeText(getActivity(), "Something went wrong. Try again. Issue: Recipe_Fragment", Toast.LENGTH_LONG).show();
+                        break;
+                }
             }
         });
 
-
-
         // Inflate the layout for this fragment
         return fragmentView;
+    }
+
+    //FUNCTION TO LINK TO HOME SCREEN ACTIVITY  NOTE: FOR NOW FOR LINKING PURPOSES I LINKED IT TO LANDING PAGE
+    public void openIngredientPopUp(String RecipeName)
+    {
+        Intent intent = new Intent(getActivity(), ReceipePop.class);
+        intent.putExtra("RecipeType",RecipeName);
+        startActivity(intent);
     }
 
 

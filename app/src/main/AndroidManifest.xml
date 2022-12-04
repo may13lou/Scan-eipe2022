@@ -51,6 +51,9 @@
         <activity
             android:name=".ForgotPasswordActivity"
             android:theme="@style/Theme.FoodApp.Custom" />
+        <activity
+            android:name=".ReceipePop"
+            android:theme="@style/Theme.FoodApp.Custom.Transparent" />
     </application>
 
 </manifest>
