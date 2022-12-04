@@ -1,6 +1,8 @@
 package com.example.foodapp;
 
+import android.content.res.AssetManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.ScaleAnimation;
@@ -10,14 +12,64 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.Serializable;
+import java.util.ArrayList;
+
 public class HomeActivity extends AppCompatActivity
 {
     private int Tab=4;
+
+    private ArrayList<String[]> recipeTexts = new ArrayList<String[]>();
+    private ArrayList<Recipe> recipes = new ArrayList<Recipe>();
+    private RecipeSearch searchBar;
+    private ArrayList<Recipe> resultOfSearch;
+
+    public String[] loadTextFileFromAssets(String pathName){
+        String content = null;
+        AssetManager manager = getApplicationContext().getAssets();
+        try {
+
+            InputStream is = manager.open(pathName);
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            content = new String(buffer,"UTF-8");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+
+        /* IMPORTANT DO NOT OVERLOOK: this version works "\n" but on Rodrigo's "\r\n" */
+        String[] splitContent;
+        if(content.indexOf('\r') != -1){
+            splitContent = content.split("\r\n");
+        }
+        else{
+            splitContent = content.split("\n");
+        }
+        return splitContent;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
+
+        recipeTexts.add(loadTextFileFromAssets("beefWellington.txt"));
+        recipeTexts.add(loadTextFileFromAssets("vegetableStirFry.txt"));
+        recipeTexts.add(loadTextFileFromAssets("bellPepperKetoNachos.txt"));
+
+
+        for(String[] recipe : recipeTexts){
+            Log.e("recipe", recipe[0]);
+            recipes.add(new Recipe(recipe));
+        }
+        searchBar = new RecipeSearch(recipes, this.getApplicationContext());
+
+        System.out.println(searchBar.search_recipe("beef"));
 
         //TAKES AWAY TOP BAR
         try
@@ -139,9 +191,14 @@ public class HomeActivity extends AppCompatActivity
             public void onClick(View view) {
 
                 if(Tab !=3){
+                    RecipeFragment rFragment = new RecipeFragment();
+                    Bundle recipeBundle = new Bundle();
+                    recipeBundle.putSerializable("recipeList", (Serializable) searchBar.get_recipe_list());
+
+                    rFragment.setArguments(recipeBundle);
                     getSupportFragmentManager().beginTransaction()
                             .setReorderingAllowed(true)
-                            .replace(R.id.fragmentContainer,RecipeFragment.class,null)
+                            .replace(R.id.fragmentContainer,rFragment,null)
                             .commit();
                     //select other tabs except the fave tab if the tabs are not 1
                     homeText.setVisibility(View.GONE);

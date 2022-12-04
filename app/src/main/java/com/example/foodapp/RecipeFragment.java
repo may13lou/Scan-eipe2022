@@ -2,14 +2,19 @@ package com.example.foodapp;
 
 import android.content.ClipData;
 import android.content.Context;
+
+import androidx.annotation.ContentView;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.res.AssetManager;
 import android.os.Bundle;
 
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,9 +26,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import android.util.Log;
-import android.widget.SearchView;
+import android.widget.AdapterView;
+import android.widget.EditText;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.Toast;
 
 /**
@@ -37,14 +46,16 @@ public class RecipeFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    private ArrayList<String[]> recipeTexts = new ArrayList<String[]>();
-    private ArrayList<Recipe> recipes = new ArrayList<Recipe>();
-    private RecipeSearch searchBar;
-    private ArrayList<Recipe> resultOfSearch;
-    private HashMap<String, ArrayList<Recipe>> searchMap;
-    private SearchView searchView;
+    //private ArrayList<String[]> recipeTexts = new ArrayList<String[]>();
+    //private ArrayList<Recipe> recipes = new ArrayList<Recipe>();
+    //private RecipeSearch searchBar;
+    //private ArrayList<Recipe> resultOfSearch;
     private RecyclerView recyclerView;
     private List<ClipData.Item> itemList;
+    private SearchView searchbar;
+    private ArrayList<Recipe> recipeList;
+    private ListView listView;
+    private ListViewAdapter adapter;
     //private ItemAdapter itemAdapter;
 
 
@@ -103,17 +114,24 @@ public class RecipeFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+
+        //recipeList = new ArrayList<>();
+        //Bundle b = this.getArguments();
+        //if(b.getSerializable("recipeList") != null)
+        //    recipeList = (ArrayList<Recipe>)b.getSerializable("recipeList");
+
+        //System.out.println("Map in fragment: "+recipeList.toString());
         //setContentView(R.layout.fragment_recipe);
-        recipeTexts.add(loadTextFileFromAssets("beefWellington.txt"));
-        recipeTexts.add(loadTextFileFromAssets("vegetableStirFry.txt"));
-        recipeTexts.add(loadTextFileFromAssets("bellPepperKetoNachos.txt"));
+        //recipeTexts.add(loadTextFileFromAssets("beefWellington.txt"));
+        //recipeTexts.add(loadTextFileFromAssets("vegetableStirFry.txt"));
+        //recipeTexts.add(loadTextFileFromAssets("bellPepperKetoNachos.txt"));
 
 
-        for(String[] recipe : recipeTexts){
-            Log.e("recipe", recipe[0]);
-            recipes.add(new Recipe(recipe));
-        }
-        searchBar = new RecipeSearch(recipes, this.getContext());
+        //for(String[] recipe : recipeTexts){
+        //    Log.e("recipe", recipe[0]);
+         //   recipes.add(new Recipe(recipe));
+        //}
+        //searchBar = new RecipeSearch(recipes, this.getContext());
         //System.out.println(searchMap);
         //for(String key : searchMap.keySet()){
           //  System.out.println(key);
@@ -131,7 +149,6 @@ public class RecipeFragment extends Fragment {
         //SEARCH CODE
 
 
-
     }
 
 
@@ -142,8 +159,49 @@ public class RecipeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View fragmentView = inflater.inflate(R.layout.fragment_recipe, container, false);
+        recipeList = new ArrayList<>();
+        Bundle b = this.getArguments();
+        if(b.getSerializable("recipeList") != null)
+            recipeList = (ArrayList<Recipe>)b.getSerializable("recipeList");
+
+        System.out.println("Map in fragment: "+recipeList.toString());
+
+        listView = (ListView) fragmentView.findViewById(R.id.listView);
+        adapter = new ListViewAdapter(this.getContext(), recipeList);
+        listView.setAdapter(adapter);
+
+        searchbar =  (SearchView) fragmentView.findViewById(R.id.searchView);
+        searchbar.setOnQueryTextListener(new SearchView.OnQueryTextListener(){
+
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                System.out.println(s);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                String text = s;
+                //System.out.println(text);
+                adapter.filter(text);
+                return false;
+            }
+        });
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                //this returns the recipe associated with the click Since it will show every recipe associated with the search
+                Recipe clickedRecipe = (Recipe) adapterView.getItemAtPosition(i);
+                clickedRecipe.print_recipe();
+            }
+        });
+
+
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_recipe, container, false);
+        return fragmentView;
     }
 
 
