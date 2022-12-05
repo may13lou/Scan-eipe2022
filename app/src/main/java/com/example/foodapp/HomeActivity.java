@@ -25,6 +25,7 @@ public class HomeActivity extends AppCompatActivity
     private ArrayList<Recipe> recipes = new ArrayList<Recipe>();
     private RecipeSearch searchBar;
     private ArrayList<Recipe> resultOfSearch;
+    private ArrayList<String> recipeFiles;
 
     public String[] loadTextFileFromAssets(String pathName){
         String content = null;
@@ -53,15 +54,41 @@ public class HomeActivity extends AppCompatActivity
         return splitContent;
     }
 
+    public ArrayList<String> getRecipeFiles() {
+        ArrayList<String> recipeFiles = new ArrayList<>();
+        String[] list;
+
+        try{
+            list = getAssets().list("");
+            for (String file : list){
+                if(file.equals("images") || file.equals("webkit")){
+                    continue;
+                }
+                else{
+                    recipeFiles.add(file);
+                }
+            }
+        }catch (IOException e){
+            System.out.println("No assets found");
+        }
+        return recipeFiles;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
 
-        recipeTexts.add(loadTextFileFromAssets("beefWellington.txt"));
-        recipeTexts.add(loadTextFileFromAssets("vegetableStirFry.txt"));
-        recipeTexts.add(loadTextFileFromAssets("bellPepperKetoNachos.txt"));
+        recipeFiles = getRecipeFiles();
 
+
+        for(String file : recipeFiles){
+            System.out.println(file);
+        }
+
+        for(String file : recipeFiles){
+            recipeTexts.add(loadTextFileFromAssets(file));
+        }
 
         for(String[] recipe : recipeTexts){
             Log.e("recipe", recipe[0]);
@@ -149,9 +176,14 @@ public class HomeActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 if(Tab !=2){
+                    FavoriteFragment fFragment = new FavoriteFragment();
+                    Bundle recipeBundle = new Bundle();
+                    recipeBundle.putSerializable("recipeList", (Serializable) searchBar.get_recipe_list());
+
+                    fFragment.setArguments(recipeBundle);
                     getSupportFragmentManager().beginTransaction()
                             .setReorderingAllowed(true)
-                            .replace(R.id.fragmentContainer,FavoriteFragment.class,null)
+                            .replace(R.id.fragmentContainer,fFragment,null)
                             .commit();
 
                     //select other tabs except the fave tab if the tabs are not 1
