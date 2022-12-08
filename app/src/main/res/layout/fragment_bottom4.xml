@@ -22,24 +22,24 @@
 
             <ImageView
                 android:id="@+id/imageView5"
-                android:layout_width="378dp"
-                android:layout_height="363dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="40dp"
-                android:src="@drawable/pizza_png"
+                android:layout_width="327dp"
+                android:layout_height="302dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="88dp"
+                android:src="@drawable/pancake_png"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/textView6"
-                android:layout_width="220dp"
-                android:layout_height="239dp"
-                android:layout_marginTop="176dp"
+                android:layout_width="210dp"
+                android:layout_height="163dp"
+                android:layout_marginTop="204dp"
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/logo_pinkrectangle"
                 android:fontFamily="@font/bs_reg"
                 android:gravity="center_vertical"
-                android:text="@string/PizzaIngredients"
+                android:text="@string/pancakeIngredients"
                 android:textColor="@color/white"
                 android:textSize="12sp"
                 android:textStyle="bold"
@@ -80,7 +80,7 @@
                         android:background="@drawable/textview_corner"
                         android:fontFamily="@font/bs_reg"
                         android:gravity="center"
-                        android:text="@string/PIZZARecipe"
+                        android:text="@string/PancakeRecipe"
                         android:textColor="@color/white"
 
                         android:textSize="15dp" />
@@ -91,13 +91,13 @@
 
             <TextView
                 android:id="@+id/textView10"
-                android:layout_width="128dp"
-                android:layout_height="48dp"
-                android:layout_marginStart="28dp"
+                android:layout_width="176dp"
+                android:layout_height="47dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
 
                 android:fontFamily="@font/bs_bold"
-                android:text="PIZZA"
+                android:text="Pancake"
                 android:textColor="@color/white"
                 android:textSize="45dp"
                 android:textStyle="bold"
@@ -106,25 +106,25 @@
 
             <TextView
                 android:id="@+id/textView13"
-                android:layout_width="244dp"
-                android:layout_height="25dp"
-                android:layout_marginStart="172dp"
-                android:layout_marginTop="12dp"
+                android:layout_width="238dp"
+                android:layout_height="18dp"
+                android:layout_marginStart="180dp"
+                android:layout_marginTop="4dp"
 
                 android:fontFamily="@font/bs_bold"
-                android:text="@string/PizzaCookingTime"
+                android:text="@string/PancakeCookingTime"
                 android:textColor="@color/white"
-                android:textSize="19dp"
+                android:textSize="18dp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
             <ImageView
-                android:id="@+id/imageView8"
-                android:layout_width="64dp"
-                android:layout_height="53dp"
-                android:layout_marginStart="172dp"
-                android:layout_marginTop="16dp"
+                android:id="@+id/imageView6"
+                android:layout_width="50dp"
+                android:layout_height="41dp"
+                android:layout_marginStart="136dp"
+                android:layout_marginTop="20dp"
                 android:src="@drawable/add_circle_24"
                 app:layout_constraintStart_toEndOf="@+id/textView10"
                 app:layout_constraintTop_toTopOf="parent" />

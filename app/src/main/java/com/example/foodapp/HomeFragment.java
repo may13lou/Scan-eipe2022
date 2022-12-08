@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 /**
@@ -32,8 +33,15 @@ public class HomeFragment extends Fragment {
     private EditText changeColor;
     private EditText searchbar;
     private BottomSheetDialog mBottomSheetDialog;
+    private BottomSheetDialog mBottomSheetDialog2;
 
     private ImageButton ImageButton;
+
+    private ImageButton ImageButton2;
+
+    private ImageButton ImageButton3;
+    private ImageButton ImageButton4;
+    private ImageButton ImageButton5;
     private TextView Text;
     private FragmentManager fm;
     // TODO: Rename and change types of parameters
@@ -75,9 +83,14 @@ public class HomeFragment extends Fragment {
         View fragmentView = inflater.inflate(R.layout.fragment_home, container, false);
         searchbar = (EditText) fragmentView.findViewById(R.id.editTextTextPersonName);
         // Inflate the layout for this fragment
-        ImageButton= (ImageButton) fragmentView.findViewById(R.id.c);
-        mBottomSheetDialog=new BottomSheetDialog(getActivity());
 
+        ImageButton= (ImageButton) fragmentView.findViewById(R.id.c);
+        ImageButton2= (ImageButton) fragmentView.findViewById(R.id.co);
+        ImageButton3= (ImageButton) fragmentView.findViewById(R.id.beef);
+        ImageButton4= (ImageButton) fragmentView.findViewById(R.id.pancake);
+        ImageButton5= (ImageButton) fragmentView.findViewById(R.id.cobbSalad);
+        mBottomSheetDialog=new BottomSheetDialog(getActivity());
+        //mBottomSheetDialog2=new BottomSheetDialog(getActivity());
         //Text=(TextView) fragmentView.getRootView().findViewById(R.id.text1);
 
         //TextView text = (TextView) fragmentView.findViewById(R.id.text1);
@@ -100,14 +113,66 @@ public class HomeFragment extends Fragment {
 
             }
         });
+
         ImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 View sheetView = getActivity().getLayoutInflater().inflate(R.layout.fragment_bottom_sheet, null);
                 mBottomSheetDialog.setContentView(sheetView);
+
                 mBottomSheetDialog.show();
                // Text.setText("This is a test for the button");
+
+                //View sheetView = getActivity().getLayoutInflater().inflate(R.layout.fragment_food, null);
+            }
+        });
+
+        ImageButton2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                View sheetView = getActivity().getLayoutInflater().inflate(R.layout.fragment_bottomfrag2, null);
+                mBottomSheetDialog.setContentView(sheetView);
+                mBottomSheetDialog.show();
+                // Text.setText("This is a test for the button");
+
+                //View sheetView = getActivity().getLayoutInflater().inflate(R.layout.fragment_food, null);
+            }
+        });
+        ImageButton3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                View sheetView = getActivity().getLayoutInflater().inflate(R.layout.fragment_bottom3, null);
+                mBottomSheetDialog.setContentView(sheetView);
+                mBottomSheetDialog.show();
+                // Text.setText("This is a test for the button");
+
+                //View sheetView = getActivity().getLayoutInflater().inflate(R.layout.fragment_food, null);
+            }
+        });
+        ImageButton4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                View sheetView = getActivity().getLayoutInflater().inflate(R.layout.fragment_bottom4, null);
+                mBottomSheetDialog.setContentView(sheetView);
+                mBottomSheetDialog.show();
+                // Text.setText("This is a test for the button");
+
+                //View sheetView = getActivity().getLayoutInflater().inflate(R.layout.fragment_food, null);
+            }
+        });
+
+        ImageButton5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                View sheetView = getActivity().getLayoutInflater().inflate(R.layout.fragment_bottom5, null);
+                mBottomSheetDialog.setContentView(sheetView);
+                mBottomSheetDialog.show();
+                // Text.setText("This is a test for the button");
 
                 //View sheetView = getActivity().getLayoutInflater().inflate(R.layout.fragment_food, null);
             }

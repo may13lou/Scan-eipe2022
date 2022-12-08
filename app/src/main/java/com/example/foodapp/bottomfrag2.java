@@ -2,30 +2,20 @@ package com.example.foodapp;
 
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
-import com.google.android.material.bottomsheet.BottomSheetBehavior;
-import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
-
-import java.io.IOException;
-import java.io.InputStream;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link BottomSheetFragment#newInstance} factory method to
+ * Use the {@link bottomfrag2#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class BottomSheetFragment extends BottomSheetDialogFragment {
+public class bottomfrag2 extends BottomSheetDialogFragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -35,13 +25,8 @@ public class BottomSheetFragment extends BottomSheetDialogFragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    private TextView textView;
-    private BottomSheetBehavior<View> bottomSheetBehavior;
-    private BottomSheetDialog dialog;
-    private StringBuilder text = new StringBuilder();
 
-
-    public BottomSheetFragment() {
+    public bottomfrag2() {
         // Required empty public constructor
     }
 
@@ -51,11 +36,11 @@ public class BottomSheetFragment extends BottomSheetDialogFragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment BottomSheetFragment.
+     * @return A new instance of fragment bottomfrag2.
      */
     // TODO: Rename and change types and number of parameters
-    public static BottomSheetFragment newInstance(String param1, String param2) {
-        BottomSheetFragment fragment = new BottomSheetFragment();
+    public static bottomfrag2 newInstance(String param1, String param2) {
+        bottomfrag2 fragment = new bottomfrag2();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -70,36 +55,17 @@ public class BottomSheetFragment extends BottomSheetDialogFragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
     }
-
-
-
-
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        /*/
-        View fragmentView = inflater.inflate(R.layout.fragment_bottom_sheet, container, false);
-        textView =(TextView) fragmentView.getRootView().findViewById(R.id.text1);
 
-        textView.setText("THis is a text");
-        /*/
         LayoutInflater lf = getActivity().getLayoutInflater();
-        View view =  lf.inflate(R.layout.fragment_bottom_sheet, container, false); //pass the correct layout name for the fragment
-        //bottomSheetBehavior=bottomSheetBehavior.from((View) view.getParent());
-      //  bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
-       // CoordinatorLayout layout =dialog.findViewByID(R.id.bottosmSheetLayout)
-       // TextView text = (TextView) view.findViewById(R.id.text1);
-       // text.setText("Just another sample");
+        View view =  lf.inflate(R.layout.fragment_bottomfrag2, container, false);
 
+
+        // Inflate the layout for this fragment
         return view;
     }
-
-
-
 }

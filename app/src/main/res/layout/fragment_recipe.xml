@@ -63,6 +63,7 @@
         android:id="@+id/searchView"
         android:layout_width="323dp"
         android:layout_height="34dp"
+        android:textColor="@color/black"
         app:iconifiedByDefault="false"
         app:layout_constraintBottom_toBottomOf="@+id/left_rectangle_accent"
         app:layout_constraintEnd_toEndOf="@+id/left_rectangle_accent"
