@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -51,6 +52,7 @@ public class FavoriteFragment extends Fragment {
     AnimationDrawable animationDrawable;
     Button cameraButton;
     Button scanTextButton;
+    RelativeLayout relativeLayout;
     private ArrayList<Recipe> recipeList;
 
     public FavoriteFragment() {
@@ -143,12 +145,12 @@ public class FavoriteFragment extends Fragment {
         AlertDialog.Builder alert = new AlertDialog.Builder(this.getContext());
         final EditText editText = new EditText(this.getContext());
         alert.setMessage("Enter your ingredients:");
-        alert.setTitle("IngredientPrompt");
+        alert.setTitle("TEXT-TO-INGREDIENTS");
 
         editText.setLines(10);
         editText.setMaxLines(20);
         editText.setGravity(Gravity.LEFT | Gravity.TOP);
-        editText.setPadding(10,10,10,10);
+        editText.setPadding(70,10,10,70);
 
 
         alert.setView(editText);
@@ -179,13 +181,13 @@ public class FavoriteFragment extends Fragment {
         Recipe result = classify_ingredients(ingredientList, recipeList);
         ArrayList<Ingredient> missingIngredients = missing_ingredients(ingredientList, result);
 
-        alert.setTitle("Best recipe");
+        alert.setTitle("BEST RECIPE");
         alert.setMessage("Closest Recipe to your ingredients: " + result.getInfoFromRecipe());
 
         String missingIngredientsText = "";
 
         for (Ingredient ingredient : missingIngredients){
-            missingIngredientsText = missingIngredientsText + ingredient.name + "\n";
+            missingIngredientsText = " " + missingIngredientsText + ingredient.name + "\n\t\t\t\t\t ";
         }
 
         System.out.println(missingIngredientsText);
@@ -264,6 +266,7 @@ public class FavoriteFragment extends Fragment {
         //animationDrawable = (AnimationDrawable) constraintLayout.getBackground();
         scanTextButton = (Button) view.findViewById(R.id.textToScan);
         cameraButton = (Button) view.findViewById(R.id.camera);
+        //relativeLayout = getActivity().findViewBy
 
 
 
@@ -288,6 +291,7 @@ public class FavoriteFragment extends Fragment {
     {
         Intent intent = new Intent(getActivity(), ReceipePop.class);
         intent.putExtra("RecipeType",RecipeName);
+
         startActivity(intent);
     }
 
