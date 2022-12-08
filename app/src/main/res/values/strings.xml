@@ -37,10 +37,14 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <!-- COMING SOON STRINGS -->
+    <string name="defaultMessage">RECIPE COMING SOON!</string>
+    <string name="sorry">We are sorry for any inconvenience this may have caused.</string>
+    <string name="camera">CAMERA COMING SOON!</string>
+
 
     <string name="receipeSubtitle">RECEIPE:</string>
     <!-- RECIPES -->
-
     <string name="BeefWellingtonCookingTime">COOKING TIME: 1.5 hours</string>
     <string name="BeefWellingtonIngredients">INGREDIENTS:"
         Beef-Tenderloin (3 pounds)

@@ -195,8 +195,12 @@ public class RecipeFragment extends Fragment {
                         openIngredientPopUp(clickedRecipeName);
                         break;
 
+                    case "Camera":
+                        openIngredientPopUp("Camera");
+
                     default:
-                        Toast.makeText(getActivity(), "Something went wrong. Try again.", Toast.LENGTH_LONG).show();
+                        openIngredientPopUp(clickedRecipeName);
+                        //Toast.makeText(getActivity(), "Something went wrong. Try again.", Toast.LENGTH_LONG).show();
                         break;
                 }
             }

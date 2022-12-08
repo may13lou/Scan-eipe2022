@@ -53,6 +53,7 @@ public class FavoriteFragment extends Fragment {
     Button cameraButton;
     Button scanTextButton;
     RelativeLayout relativeLayout;
+    int Camera = 0;
     private ArrayList<Recipe> recipeList;
 
     public FavoriteFragment() {
@@ -285,13 +286,18 @@ public class FavoriteFragment extends Fragment {
             }
         });
 
+        cameraButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openIngredientPopUp("Camera");
+            }
+        });
     }
 
     public void openIngredientPopUp(String RecipeName)
     {
         Intent intent = new Intent(getActivity(), ReceipePop.class);
         intent.putExtra("RecipeType",RecipeName);
-
         startActivity(intent);
     }
 

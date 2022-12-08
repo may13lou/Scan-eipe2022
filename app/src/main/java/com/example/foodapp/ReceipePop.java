@@ -26,6 +26,7 @@ public class ReceipePop extends Activity
         Bundle bundle = getIntent().getExtras();
         String RecipeType = bundle.getString("RecipeType");
 
+        //SWTICH FOR RECIPES
         switch(RecipeType)
         {
             case "Beef Wellington":
@@ -40,8 +41,12 @@ public class ReceipePop extends Activity
                 setContentView(R.layout.receipe_popup_stirfry);
                 break;
 
+            case "Camera":
+                setContentView(R.layout.camera_comingsoon);
+                break;
+
             default:
-                Toast.makeText(this, "Something went wrong. Issue: Receipe_Pop.", Toast.LENGTH_LONG).show();
+                setContentView(R.layout.receipe_comingsoon);
                 break;
 
         }
